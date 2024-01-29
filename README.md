@@ -4,7 +4,7 @@ A tracking app to organise your to-do's. Created with CRA and Typescript.
 ### Follow through the below steps to run a local instance of the project.
 ### Install the dependencies:
 
-`npm install`
+`npm install --legacy-peer-deps`
 
 ### Running in development:
 
