@@ -1,0 +1,15 @@
+
+.date-input {
+    padding: 8px;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .date-input:hover,
+  .date-input:focus {
+    border-color: #2980b9;
+  }
+  

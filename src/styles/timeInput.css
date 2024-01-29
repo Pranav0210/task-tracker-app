@@ -1,0 +1,16 @@
+/* TimeInput.css */
+
+.time-input {
+    padding: 8px;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .time-input:hover,
+  .time-input:focus {
+    border-color: #2980b9;
+  }
+  
