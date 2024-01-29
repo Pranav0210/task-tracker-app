@@ -5,7 +5,7 @@ import '../styles/dashboard.css';
 import NewTask from './NewTask.tsx';
 import TimeInput from './TimeInput.tsx';
 import TaskCard from './TaskCard.tsx';
-import TaskData from '../tasks.ts';
+// import TaskData from '../tasks.ts';
 
 interface Task {
   id: number;
@@ -18,7 +18,30 @@ interface Task {
 }
 
 const Dashboard: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>(TaskData);
+  const [tasks, setTasks] = useState<Task[]>([{
+    id: 1,
+    title: 'Complete feature integration for task management',
+    description: 'Integrate new features into the task management system for enhanced functionality.',
+    isComplete: false,
+    dueDate: new Date('2024-02-12'),
+    dateAdded: new Date('2024-01-28T12:34:56.789Z'),
+  },
+  {
+    id: 2,
+    title: 'Prepare agenda for team meeting',
+    description: 'Create an agenda outlining key topics and updates for the upcoming team meeting.',
+    isComplete: true,
+    dueDate: new Date('2024-02-15'),
+    dateAdded: new Date('2024-01-28T12:34:56.789Z'),
+  },
+  {
+    id: 3,
+    title: 'Add new tasks to appear below these sample tasks',
+    description: 'You can mark the task as completed by clicking on the clock icon and similarly unmarked by clicking on the check icon. Delete the task by clicking on the trash icon.',
+    isComplete: false,
+    dueDate: new Date('2024-02-18'),
+    dateAdded: new Date('2024-01-28T12:34:56.789Z'),
+  }]);
   const [filterComplete, setFilterComplete] = useState<boolean | null>(null);
   const [filterDate, setFilterDate] = useState<string>('');
 

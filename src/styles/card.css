@@ -47,6 +47,7 @@
     color:#77c0ff;
 }
 .check-icon:hover{
+    color: #060606;
     transform: scale(1.2);
     box-shadow: 0 0 4px #111;
     transition: .3s;
