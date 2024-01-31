@@ -5,6 +5,7 @@ import '../styles/dashboard.css';
 import NewTask from './NewTask.tsx';
 import TimeInput from './TimeInput.tsx';
 import TaskCard from './TaskCard.tsx';
+import Header from './Header.tsx';
 // import TaskData from '../tasks.ts';
 
 interface Task {
@@ -45,6 +46,32 @@ const Dashboard: React.FC = () => {
   const [filterComplete, setFilterComplete] = useState<boolean | null>(null);
   const [filterDate, setFilterDate] = useState<string>('');
 
+  //handler to manage dynamic heights
+  useEffect(()=>{
+    const headContainer = document.getElementById('dash-header')
+    const leftContainer = document.getElementById('dash-left')
+    let headHeight = 0
+    
+    if(headContainer){
+      headHeight = headContainer.clientHeight
+    }
+    const leftContainerHeight = window.innerHeight - headHeight;
+    
+    if(leftContainer)
+    leftContainer.style.height = `${leftContainerHeight}px`
+
+    const filterContainer = document.getElementById('filter-container')
+    const listContainer = document.getElementById('list-container')
+    let filterHeight = 0
+    
+    if(filterContainer){
+      filterHeight = filterContainer.clientHeight
+    }
+    const listHeight = leftContainerHeight - filterHeight;
+    
+    if(listContainer)
+    listContainer.style.height = `${listHeight}px`
+  },[]);
   useEffect(() => {
     // Load tasks from LocalStorage on component mount
     const storedTasks = localStorage.getItem('tasks');
@@ -83,59 +110,57 @@ const Dashboard: React.FC = () => {
     );
 
   return (
-    <div className="dashboard">
-      <div className='left-container'>
-        <div className='header-wrapper'>
-          <div className='header-title'>{`Task Tracker App`}</div>
-          <div className='header-container'>
-            <div className="filter-options">
-              <label>
-                Show:
-                <select
-                  value={filterComplete === null ? 'all' : filterComplete.toString()}
-                  onChange={(e) =>
-                    setFilterComplete(e.target.value === 'all' ? null : e.target.value === 'true')
-                  }
-                >
-                  <option value="all">All</option>
-                  <option value="true">Complete</option>
-                  <option value="false">Incomplete</option>
-                </select>
-              </label>
-              <label>
-                Date:
-                <input
-                  type="date"
-                  value={filterDate}
-                  onChange={(e) => setFilterDate(e.target.value)}
+    <div className='global-container'>
+      <Header/>
+      <div className="dashboard">
+        <div className='left-container' id='dash-left'>
+          <div className='filter-wrapper' id='filter-container'>
+            <div className='filter-container'>
+              <div className="filter-options">
+                <label>
+                  Show:
+                  <select
+                    value={filterComplete === null ? 'all' : filterComplete.toString()}
+                    onChange={(e) =>
+                      setFilterComplete(e.target.value === 'all' ? null : e.target.value === 'true')
+                    }
+                  >
+                    <option value="all">All</option>
+                    <option value="true">Complete</option>
+                    <option value="false">Incomplete</option>
+                  </select>
+                </label>
+                <label>
+                  Date:
+                  <input
+                    type="date"
+                    value={filterDate}
+                    onChange={(e) => setFilterDate(e.target.value)}
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className='list-shape-wrapper' id='list-container'>
+            <div className='list-wrapper'>
+              <div className="task-list">
+              {filteredTasks.map((task) => (
+                <TaskCard
+                  key={task.id}
+                  {...task}
+                  onCompleteToggle={handleTaskCompleteToggle}
+                  onTaskDelete={handleTaskDelete}
                 />
-              </label>
+              ))}
+              </div>
             </div>
           </div>
         </div>
-
-        <div className='list-shape-wrapper'>
-          <div className='list-wrapper'>
-            <div className="task-list">
-            {filteredTasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                {...task}
-                onCompleteToggle={handleTaskCompleteToggle}
-                onTaskDelete={handleTaskDelete}
-              />
-            ))}
-            </div>
-          </div>
+        <div className='right-container'>
+          <NewTask onTaskCreate={handleTaskCreate}/>
         </div>
       </div>
-      <NewTask onTaskCreate={handleTaskCreate}/>
-            
-      {/* <Link to="/new-task">
-        <div className="add-task-button">+</div>
-      </Link> */}
-
-      {/* <NewTask onTaskCreate={handleTaskCreate} /> */}
     </div>
   );
 };

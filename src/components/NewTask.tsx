@@ -48,33 +48,39 @@ const NewTask: React.FC<NewTaskProps> = ({ onTaskCreate }) => {
 
   return (
     <div className='form-container'>
-      <h2>Create New Task</h2>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        className="title-text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-
-      <label htmlFor="dueDate">Due</label>
-      <DateInput onChange={setDueDate} value={dueDate} />
+      <h2 className='form-title'>Create New Task</h2>
+      <div className='input-group'>
+        <label htmlFor="title" className="label-text">Task Name</label>
+        <input
+          type="text"
+          className="title-text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div className='input-group'>
+        <label className="label-text" htmlFor="dueDate">Due</label>
+        <DateInput onChange={setDueDate} value={dueDate} />
+      </div>
       {/* <input
         type="datetime-local"
         id="dueDate"
         value={dueDate ? dueDate.toISOString().slice(0, 16) : ''}
         onChange={(e) => setDueDate(new Date(e.target.value))}
       /> */}
+      <div className='input-group'>
+        <label className="label-text" htmlFor="dueTime">Due Time:</label>
+        <TimeInput onChange={setDueTime} value={dueTime} />
+      </div>
 
-      <label htmlFor="dueTime">Due Time:</label>
-      <TimeInput onChange={setDueTime} value={dueTime} />
-
-      <label htmlFor="description">Description</label>
-      <textarea
-        className="description-text"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
+      <div className='input-group'>
+        <label className="label-text" htmlFor="description">Description</label>
+        <textarea
+          className="description-text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
 
       <div className="btn" onClick={handleCreateTask}>Create Task</div>
     </div>
