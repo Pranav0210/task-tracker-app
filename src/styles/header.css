@@ -18,18 +18,19 @@
     border-radius: 0 50px 0 0;
 }
 .menu-button{
-    align-self: flex-start;
+    align-self: flex-center;
     /* height: 50px;
     width: 50px; */
     /* border: 2px solid #348ddb;;
     border-radius: 10px; */
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
     padding: 10px;
     margin: 10px;
 }
 .bar1, .bar2{
-    width: 35px;
+    width: 60px;
     height: 2px;
     /* border-radius: 20%; */
     background-color: #112f49;
@@ -38,7 +39,7 @@
     /* align-items: center; */
   }
   .bar2{
-    width: 25px;
+    width: 35px;
   }
 .list-title {
     color: Black;
@@ -90,11 +91,12 @@
         border-radius: 0 40px 0 0;
     }
     .menu-button {
-        align-self: flex-start;
+        align-self: flex-center;
         height: 60px;
         width: 60px;
-        padding: 20px 20px 0px 20px;
+        padding: 20px 20px 20px 20px;
         margin: 0;
+        justify-content: center;
     }
     .list-title{
         height: 60px;

@@ -158,12 +158,12 @@
       border-radius: 0 30 0 0px;
       max-width: 100%;
       overflow: auto;
-      align-self: flex-end;
+      /* align-self: flex-end; */
     }
     .left-container{
       max-width: 100%;
       max-height: 100%;
       flex: 1;
-      align-self: flex-end;
+      /* align-self: flex-end; */
     }
   }
