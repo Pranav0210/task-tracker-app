@@ -11,6 +11,7 @@
 }
 .header-left{
     display: flex;
+    align-items: center;
     flex-direction: row;
     height: 100%;
     background-color: white;
@@ -30,22 +31,22 @@
     margin: 10px;
 }
 .bar1, .bar2{
-    width: 60px;
+    width: 45px;
     height: 2px;
     /* border-radius: 20%; */
     background-color: #112f49;
-    margin: 6px 0;
+    margin: 4px 0;
     transition: 0.4s;
     /* align-items: center; */
   }
   .bar2{
-    width: 35px;
+    width: 30px;
   }
 .list-title {
     color: Black;
     font-weight:900;
     font-size: 38px;
-    padding: 10px 10px 0 0px;
+    /* padding: 10px 10px 0 0px; */
     /* padding-top: 0; */
 }
 .header-right{
@@ -89,6 +90,7 @@
         height: 100%;
         margin: 0;
         border-radius: 0 40px 0 0;
+        align-items: flex-start;
     }
     .menu-button {
         align-self: flex-center;
